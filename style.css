@@ -1,0 +1,38 @@
+header {
+	background: url("http://i.imgur.com/dqQcYDK.jpg?1");
+	background-size: cover;
+	text-align: center;
+	color: #000;
+}
+img {
+	margin: 10px 0px 0px 0px;
+	border: 6px solid black;
+	border-radius: 20px;
+}
+body {
+	background: black;
+}
+h2 {
+	text-align: center;
+	color: #FFF;
+	font-family: Helvetica;
+}
+p {
+	color: #FFF;
+	text-align: center;
+}
+ul {
+	color: white;
+	text-align: center;
+	padding: 10px;
+}
+ol {
+	color: #00F;
+}
+div {
+	text-align: center;
+}
+h3 {
+	background-color: #FFF;
+	text-align: center;
+}
