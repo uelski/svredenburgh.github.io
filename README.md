@@ -14,3 +14,8 @@
 4. Beer
 
 ### For now I've used an "About Me" file I already created to get into WDI. Don't tell anyone.
+
+```html
+<h1>Sam Vredenburgh</h1>
+<p>I am 27 years old</p>
+```
