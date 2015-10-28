@@ -6,4 +6,11 @@
 * Just kidding, Chicago is an awesome city.
 * Playing music is [constant fun](https://soundcloud.com/mason-cos).
 
-### For now I've used an "About Me" file I already created to get into WDI. Don't tell anyone. 
+#### Favorite Food:
+
+1. Ham
+2. Ham Steak
+3. Chicken Tortas
+4. Beer
+
+### For now I've used an "About Me" file I already created to get into WDI. Don't tell anyone.
