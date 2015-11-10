@@ -1,20 +1,8 @@
 $(document).ready(function(){
 console.log('connected');
-console.log(sounds[1]);
 
 
-$('#playBtn').click(function() {
-for (var i = 0; i < sounds.length; i++) {
-    console.log(sounds[i]);
-  playSound(sounds[i]);
-  $(sounds[i].pad).animate({opacity: 1.0},{
-    duration: 5,
-    complete: function(){
-      $(sounds[i].pad).animate({opacity:0.5}, 100);
-    }
-  });
-  }
-})
+
 
 
 
@@ -22,8 +10,10 @@ for (var i = 0; i < sounds.length; i++) {
 
 
 })//end of document.ready
-//
-function playSound(square) {
+
+
+
+function playSound(square){
     $(square.sound).trigger('play');
 
 }
@@ -46,16 +36,11 @@ var s9 = new sound('#pad9','#sound9');
 
 var sounds = [s1,s2,s3,s4,s5,s6,s7,s8,s9];
 
-function animate(pad,clip) {
-  playSound(clip);
-  $(pad).animate({opacy: "black"},500);
-}
-
-$('#playBtn').click(function() {
-  $('#pad1').animate({opacity: 1.0},{
-    duration: 5,
+function animate(square){
+  $(square.pad).animate({opacity: 1.0},{
+    duration: 50,
     complete: function(){
-      $('#pad1').animate({opacity:0.5}, 100);
+      $(square.pad).animate({opacity:0.5}, 100);
     }
-  });
-})
+  })
+}
