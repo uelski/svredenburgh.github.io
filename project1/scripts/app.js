@@ -2,9 +2,8 @@ $(document).ready(function(){
 console.log('connected');
 
 
-
-
-
+play();
+userClick();
 
 
 
@@ -49,9 +48,10 @@ function animate(square){
       }
     })
 }
+var randomPad = sounds[randomNum()];
 
-function randomNum(){
-  return Math.floor(Math.random() * 8);
+ function randomNum(){
+  return (Math.floor(Math.random() * 8));
 }
 
 var user1 = {
@@ -60,9 +60,43 @@ var user1 = {
   difficulty: 1,
   score: 0,
   active: false,
+  hits: 4,
   compSequence: [],
   userSequence: [],
   init: function(){
     newGame();
+  }
+}
+
+function repeat(){
+  setTimeout(function() {
+    animate(sounds[randomNum()]);
+  }, 700);
+}
+
+function play() {
+  $('#playBtn').click(function(){
+    animate(sounds[randomNum()]);
+    repeat();
+    startGame();
+  })
+}
+
+function sequence() {
+  var compSequence = [];
+  for (var i = 0; i < sounds.length; i++) {
+    array[i]
+  }
+}
+
+function userPlay(pad) {
+  this.pad = pad;
+  $(pad.pad).click(function(){
+    animate(pad);
+  })
+}
+function userClick(){
+  for (var i = 0; i < sounds.length; i++) {
+    userPlay(sounds[i]);
   }
 }
