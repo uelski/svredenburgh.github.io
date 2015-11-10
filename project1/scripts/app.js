@@ -68,17 +68,18 @@ var user1 = {
   }
 }
 
-function repeat(){
+function repeat(times){
   setTimeout(function() {
     animate(sounds[randomNum()]);
-  }, 700);
+  },(times*700));
 }
 
 function play() {
   $('#playBtn').click(function(){
     animate(sounds[randomNum()]);
-    repeat();
-    startGame();
+    for (var i = 1; i < 5; i++) {
+      repeat(i);
+    }
   })
 }
 
