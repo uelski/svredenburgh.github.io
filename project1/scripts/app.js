@@ -9,6 +9,9 @@ console.log('connected');
 
 
 
+
+
+
 })//end of document.ready
 
 
@@ -36,11 +39,30 @@ var s9 = new sound('#pad9','#sound9');
 
 var sounds = [s1,s2,s3,s4,s5,s6,s7,s8,s9];
 
+
 function animate(square){
-  $(square.pad).animate({opacity: 1.0},{
-    duration: 50,
-    complete: function(){
-      $(square.pad).animate({opacity:0.5}, 100);
-    }
-  })
+    playSound(square);
+    $(square.pad).animate({opacity: 1.0},{
+      duration: 50,
+      complete: function(){
+        $(square.pad).animate({opacity:0.6}, 100);
+      }
+    })
+}
+
+function randomNum(){
+  return Math.floor(Math.random() * 8);
+}
+
+var user1 = {
+  level: 1,
+  turn: 0,
+  difficulty: 1,
+  score: 0,
+  active: false,
+  compSequence: [],
+  userSequence: [],
+  init: function(){
+    newGame();
+  }
 }
