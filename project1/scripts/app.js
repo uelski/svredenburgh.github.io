@@ -1,7 +1,7 @@
 $(document).ready(function(){
 console.log('connected');
 
-
+sequence();
 play();
 userClick();
 
@@ -13,11 +13,12 @@ userClick();
 
 })//end of document.ready
 
-
+var compGenerator = [];
 
 function playSound(square){
+  if (square.hasOwnProperty('sound')) {
     $(square.sound).trigger('play');
-
+  }
 }
 
 
@@ -38,20 +39,42 @@ var s9 = new sound('#pad9','#sound9');
 
 var sounds = [s1,s2,s3,s4,s5,s6,s7,s8,s9];
 
-
-function animate(square){
-    playSound(square);
-    $(square.pad).animate({opacity: 1.0},{
-      duration: 50,
-      complete: function(){
-        $(square.pad).animate({opacity:0.6}, 100);
-      }
-    })
+function repeat(square, times){
+  setTimeout(function() {
+    soundFlash(square);
+  },(times*500));
+}
+function flash(square) {
+$(square.pad).animate({opacity: 1.0},{
+  duration: 50,
+  complete: function(){
+    $(square.pad).animate({opacity:0.6}, 100);
+  }
+})
+}
+function soundFlash(square){
+  playSound(square);
+  flash(square);
+}
+function animate(square, times){
+  console.log('animate started');
+  if (square == null) return false;
+  console.log('animate passed null check');
+  // repeat(square, times);
+  soundFlash(square);
+  //playSound(square);
+  // $(square.pad).animate({opacity: 1.0},{
+  //   duration: 50,
+  //   complete: function(){
+  //     $(square.pad).animate({opacity:0.6}, 100);
+  //     }
+  // })
 }
 var randomPad = sounds[randomNum()];
 
- function randomNum(){
-  return (Math.floor(Math.random() * 8));
+function randomNum(){
+  var ret = (Math.floor(Math.random() * 8))
+  return ret;
 }
 
 var user1 = {
@@ -60,7 +83,7 @@ var user1 = {
   difficulty: 1,
   score: 0,
   active: false,
-  hits: 4,
+  hits: 5,
   compSequence: [],
   userSequence: [],
   init: function(){
@@ -68,25 +91,24 @@ var user1 = {
   }
 }
 
-function repeat(times){
-  setTimeout(function() {
-    animate(sounds[randomNum()]);
-  },(times*700));
-}
 
-function play() {
-  $('#playBtn').click(function(){
-    animate(sounds[randomNum()]);
-    for (var i = 1; i < 5; i++) {
-      repeat(i);
-    }
-  })
-}
+
+ function play(){
+   $('#playBtn').click(function(){
+     for (var i = 0; i < compGenerator.length; i++) {
+      //  animate(compGenerator[i]);
+      //  console.log(compGenerator);
+      repeat(compGenerator[i],i)
+     }
+   })
+ }
 
 function sequence() {
-  var compSequence = [];
-  for (var i = 0; i < sounds.length; i++) {
-    array[i]
+
+  for (var i = 0; i < 5; i++) {
+    var rando = randomNum();
+    compGenerator.push(sounds[rando]);
+    //console.log(compGenerator);
   }
 }
 
