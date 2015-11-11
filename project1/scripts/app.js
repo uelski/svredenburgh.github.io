@@ -16,6 +16,7 @@ console.log('connected');
 
 sequence();
 play();
+registerClick();
 clickToCompare();
 
 
@@ -123,7 +124,7 @@ var user1 = {
      }
     //  sequence();
      userClick();
-     registerClick();
+    //  registerClick();
      compToArray();
      compToString();
     //  if(finalUserOutput.length === user1.hits){
@@ -157,14 +158,15 @@ function userClick(){
 
 function registerClick() {
   $('.pad').click(function(){
-
+    user1.clicks += 1;
     var clickedId = $(this).prop('id');
     console.log(clickedId);
+    console.log("user clicks" + user1.clicks);
     userArray.push(clickedId);
-    console.log(userArray);
+    console.log("user array"+userArray);
     finalUserOutput = userArray.join(',');
-    console.log(finalUserOutput);
-    user1.clicks += 1;
+    console.log("final"+finalUserOutput);
+
     clickToCompare();
   })
 }
@@ -189,20 +191,22 @@ for (var i = 0; i < idArray.length; i++) {
 }
 
 function compare() {
-  console.log(finalUserOutput);
-  console.log(finalComp);
+  // console.log(finalUserOutput);
+  // console.log(finalComp);
   if (finalUserOutput == finalComp){
+    user1.score += 1;
+
+    $('#user1').text(user1.score);
     console.log('good hit');
-  }else {
+    $('#topOfGame').text("You won! Press play to move on");
+    continueGame();
+  } else {
     console.log('bad hit');
+    $('#topOfGame').text("You lose! Press Play to try again");
+    resetGame();
   }
 }
 
-var last = user1.hits - 1;
-
-var lastPad = userArray[last];
-
-var lastId = '#' + lastPad;
 
 
 
@@ -214,4 +218,23 @@ function clickToCompare(){
     if (user1.clicks == user1.hits) {
       compare();
     }
+}
+
+function continueGame(){
+  user1.hits += 1;
+  user1.clicks = 0;
+  console.log("user clicks continue"+user1.clicks);
+  compGenerator = [];
+  //compGenerator.push(sounds[randomNum()]);//generated random pattern
+  userArray = [];//user pattern
+  idArray = [];//array of id's from compGenerator
+  finalUserOutput = '';//string of user pattern
+  finalComp = '';
+  sequence();
+  // play();
+  // clickToCompare();
+}
+
+function resetGame() {
+
 }
