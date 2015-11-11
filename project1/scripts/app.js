@@ -13,8 +13,13 @@ console.log('connected');
 // if(finalUserOutput.length === finalComp.length){
 //   compare();
 // }
+
 sequence();
 play();
+clickToCompare();
+
+
+
 
 
 
@@ -99,6 +104,7 @@ var user1 = {
   score: 0,
   active: false,
   hits: 2,
+  clicks: 0,
   compSequence: [],
   userSequence: [],
   init: function(){
@@ -120,11 +126,13 @@ var user1 = {
      registerClick();
      compToArray();
      compToString();
-     if(finalUserOutput.length === finalComp.length){
-       compare();
-     }
+    //  if(finalUserOutput.length === user1.hits){
+    //    compare();
+    //  }
    })
  }
+
+
 
 function sequence() {
 
@@ -156,10 +164,9 @@ function registerClick() {
     console.log(userArray);
     finalUserOutput = userArray.join(',');
     console.log(finalUserOutput);
+    user1.clicks += 1;
+    clickToCompare();
   })
-  // var string = userArray.join(',');
-  // finalUserOutput = string;
-  // console.log(finalUserOutput);
 }
 
 
@@ -189,4 +196,22 @@ function compare() {
   }else {
     console.log('bad hit');
   }
+}
+
+var last = user1.hits - 1;
+
+var lastPad = userArray[last];
+
+var lastId = '#' + lastPad;
+
+
+
+function clickToCompare(){
+  // check to see how many are in comp
+  // update click counter
+  // console.log(user1.clicks);
+  // check and see how many times user has clicked
+    if (user1.clicks == user1.hits) {
+      compare();
+    }
 }
