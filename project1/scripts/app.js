@@ -108,9 +108,6 @@ var user1 = {
   clicks: 0,
   compSequence: [],
   userSequence: [],
-  init: function(){
-    newGame();
-  }
 }
 
 
@@ -199,6 +196,12 @@ function compare() {
     $('#user1').text(user1.score);
     console.log('good hit');
     $('#topOfGame').text("You won! Press play to move on");
+    $('#topOfGame').animate({opacity: 1.0},{
+      duration: 500,
+      complete: function(){
+        $('#topOfGame').animate({opacity:0.6}, 500);
+      }
+    })
     continueGame();
   } else {
     console.log('bad hit');
@@ -223,7 +226,7 @@ function clickToCompare(){
 function continueGame(){
   user1.hits += 1;
   user1.clicks = 0;
-  console.log("user clicks continue"+user1.clicks);
+  //console.log("user clicks continue"+user1.clicks);
   compGenerator = [];
   //compGenerator.push(sounds[randomNum()]);//generated random pattern
   userArray = [];//user pattern
