@@ -6,6 +6,15 @@ play();
 userClick();
 
 
+registerClick()
+setTimeout(function(){
+  compare();
+}, 2000);
+
+
+
+
+
 
 
 
@@ -14,6 +23,7 @@ userClick();
 })//end of document.ready
 
 var compGenerator = [];
+var userArray = [];
 
 function playSound(square){
   if (square.hasOwnProperty('sound')) {
@@ -60,15 +70,15 @@ function animate(square, times){
   console.log('animate started');
   if (square == null) return false;
   console.log('animate passed null check');
-  // repeat(square, times);
-  soundFlash(square);
-  //playSound(square);
-  // $(square.pad).animate({opacity: 1.0},{
-  //   duration: 50,
-  //   complete: function(){
-  //     $(square.pad).animate({opacity:0.6}, 100);
-  //     }
-  // })
+  repeat(square, times);
+  // soundFlash(square);
+  playSound(square);
+  $(square.pad).animate({opacity: 1.0},{
+    duration: 50,
+    complete: function(){
+      $(square.pad).animate({opacity:0.6}, 100);
+      }
+  })
 }
 var randomPad = sounds[randomNum()];
 
@@ -83,7 +93,7 @@ var user1 = {
   difficulty: 1,
   score: 0,
   active: false,
-  hits: 5,
+  hits: 2,
   compSequence: [],
   userSequence: [],
   init: function(){
@@ -105,7 +115,7 @@ var user1 = {
 
 function sequence() {
 
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < user1.hits; i++) {
     var rando = randomNum();
     compGenerator.push(sounds[rando]);
     //console.log(compGenerator);
@@ -121,5 +131,36 @@ function userPlay(pad) {
 function userClick(){
   for (var i = 0; i < sounds.length; i++) {
     userPlay(sounds[i]);
+  }
+}
+
+function registerClick() {
+  $('.pad').click(function(){
+
+    var clickedId = $(this).prop('id');
+    console.log(clickedId);
+    userArray.push(clickedId);
+    console.log(userArray);
+  })
+}
+
+function finalArray(){
+  var array = [];
+  setTimeout(function(){
+    array = userArray;
+  }, 2000);
+  console.log(array);
+  return array;
+}
+
+var finalUserArray = finalArray();
+
+function compare() {
+  for (var i = 0; i < user1.hits; i++) {
+  if (finalUserArray == compGenerator[i].pad){
+    console.log('good hit');
+  } else {
+    console.log('bad hit');
+  }
   }
 }
