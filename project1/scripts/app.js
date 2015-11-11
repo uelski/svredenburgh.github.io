@@ -1,18 +1,20 @@
 $(document).ready(function(){
 console.log('connected');
 
+// sequence();
+// play();
+// userClick();
+//
+//
+// registerClick();
+// compToArray();
+// compToString();
+//
+// if(finalUserOutput.length === finalComp.length){
+//   compare();
+// }
 sequence();
 play();
-userClick();
-
-
-registerClick()
-setTimeout(function(){
-  compare();
-}, 2000);
-
-
-
 
 
 
@@ -22,8 +24,11 @@ setTimeout(function(){
 
 })//end of document.ready
 
-var compGenerator = [];
-var userArray = [];
+var compGenerator = [];//generated random pattern
+var userArray = [];//user pattern
+var idArray = []//array of id's from compGenerator
+var finalUserOutput = '';//string of user pattern
+var finalComp = '';//string of idArray
 
 function playSound(square){
   if (square.hasOwnProperty('sound')) {
@@ -67,9 +72,9 @@ function soundFlash(square){
   flash(square);
 }
 function animate(square, times){
-  console.log('animate started');
+  //console.log('animate started');
   if (square == null) return false;
-  console.log('animate passed null check');
+  //console.log('animate passed null check');
   repeat(square, times);
   // soundFlash(square);
   playSound(square);
@@ -110,6 +115,14 @@ var user1 = {
       //  console.log(compGenerator);
       repeat(compGenerator[i],i)
      }
+    //  sequence();
+     userClick();
+     registerClick();
+     compToArray();
+     compToString();
+     if(finalUserOutput.length === finalComp.length){
+       compare();
+     }
    })
  }
 
@@ -141,26 +154,39 @@ function registerClick() {
     console.log(clickedId);
     userArray.push(clickedId);
     console.log(userArray);
+    finalUserOutput = userArray.join(',');
+    console.log(finalUserOutput);
   })
+  // var string = userArray.join(',');
+  // finalUserOutput = string;
+  // console.log(finalUserOutput);
 }
 
-function finalArray(){
-  var array = [];
-  setTimeout(function(){
-    array = userArray;
-  }, 2000);
-  console.log(array);
-  return array;
-}
 
-var finalUserArray = finalArray();
+
+
+function compToArray() {
+for (var i = 0; i < compGenerator.length; i++) {
+  console.log(compGenerator[i].pad);
+  idArray.push(compGenerator[i].pad);
+  }
+}
+function compToString() {
+for (var i = 0; i < idArray.length; i++) {
+  idArray[i] = idArray[i].replace('#','');
+  console.log(idArray);
+  var compString = idArray.join(',')
+  finalComp = compString;
+  }
+  console.log(finalComp);
+}
 
 function compare() {
-  for (var i = 0; i < user1.hits; i++) {
-  if (finalUserArray == compGenerator[i].pad){
+  console.log(finalUserOutput);
+  console.log(finalComp);
+  if (finalUserOutput == finalComp){
     console.log('good hit');
-  } else {
+  }else {
     console.log('bad hit');
-  }
   }
 }
