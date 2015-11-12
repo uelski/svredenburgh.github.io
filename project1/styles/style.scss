@@ -11,7 +11,12 @@ body,html {
 .wrapper{
   text-align: center;
   position: relative;
-  // background-color: blue;
+  // background-color: rgb(71, 71, 71);
+  background:
+	linear-gradient(
+	-158.23688982580018deg,
+	rgba(20,28,20,1) 7.6471%,
+	rgba(18,181,13,1) 98.472%);
 }
 
 #header{
@@ -32,7 +37,6 @@ color: white;
 top: 0;
 left: 0;
 bottom: 0;
-z-index: -1;
 width: 20%;
 background-color: rgb(1, 5, 13);
 position: absolute;
@@ -41,14 +45,16 @@ margin-left: -20px;
 
 #sidebar {
   float: left;
-  width: 15%;
-  height: 500px;
+  width: 75%;
+  height: 400px;
   padding: 10px;
   text-align: center;
   border: 1px solid $textColor;
   font-family: $play;
   color: $textColor;
   font-size: 25px;
+  margin-top: 175px;
+  margin-left: 10px;
 }
 
 

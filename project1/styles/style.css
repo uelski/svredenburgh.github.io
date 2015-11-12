@@ -4,7 +4,8 @@ body, html {
 
 .wrapper {
   text-align: center;
-  position: relative; }
+  position: relative;
+  background: linear-gradient(-158.23689deg, #141c14 7.6471%, #12b50d 98.472%); }
 
 #header {
   height: 175px;
@@ -21,7 +22,6 @@ body, html {
   top: 0;
   left: 0;
   bottom: 0;
-  z-index: -1;
   width: 20%;
   background-color: #01050d;
   position: absolute;
@@ -29,14 +29,16 @@ body, html {
 
 #sidebar {
   float: left;
-  width: 15%;
-  height: 500px;
+  width: 75%;
+  height: 400px;
   padding: 10px;
   text-align: center;
   border: 1px solid #5c7a78;
   font-family: "Play", sans-serif;
   color: #5c7a78;
-  font-size: 25px; }
+  font-size: 25px;
+  margin-top: 175px;
+  margin-left: 10px; }
 
 #topOfGame {
   height: 55px;
