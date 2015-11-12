@@ -107,6 +107,7 @@ var user = {
       //  console.log(compGenerator);
       repeat(compGenerator[i],i)
      }
+     $('#jaco').fadeOut([4000]);
     //  sequence();
     //  userClick();
     //  registerClick();
@@ -187,17 +188,13 @@ function compare() {
       }
     console.log('good hit');
     $('#topOfGame').text("You beat round " + user.score + ". Press play to move on.");
-    // $('#topOfGame').animate({opacity: 1.0},{
-    //   duration: 1000,
-    //   complete: function(){
-    //     $('#topOfGame').animate({opacity:0.6}, 2000);
-    //   }
-    // })
     continueGame();
   } else {
+    $('#jaco').fadeIn([4000]);
     console.log('bad hit');
     if(user.number == 1){
     $('#topOfGame').text("Bummer, Jaco is too good. Next Player Turn!");
+
   }
     user.number += 1;
     if (user.number == 2) {

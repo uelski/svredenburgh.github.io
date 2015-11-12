@@ -13,10 +13,12 @@ body,html {
   position: relative;
   // background-color: rgb(71, 71, 71);
   background:
-	linear-gradient(
-	-158.23688982580018deg,
-	rgba(20,28,20,1) 7.6471%,
-	rgba(18,181,13,1) 98.472%);
+  linear-gradient(
+	30.6820686368721deg,
+	rgba(214,245,15,1) 1.2500%,
+	rgba(168,158,67,1) 27.639%,
+	rgba(75,120,163,1) 63.403%,
+	rgba(166,255,112,1) 96.042%);
 }
 
 #header{
@@ -32,6 +34,12 @@ color: white;
   height: 160px;
 }
 
+#jaco {
+  height: 120px;
+  margin-bottom: 50px;
+  display:none;
+
+}
 
 #side {
 top: 0;

@@ -5,7 +5,7 @@ body, html {
 .wrapper {
   text-align: center;
   position: relative;
-  background: linear-gradient(-158.23689deg, #141c14 7.6471%, #12b50d 98.472%); }
+  background: linear-gradient(30.68207deg, #d6f50f 1.25%, #a89e43 27.639%, #4b78a3 63.403%, #a6ff70 96.042%); }
 
 #header {
   height: 175px;
@@ -17,6 +17,11 @@ body, html {
 #title {
   padding: 25px;
   height: 160px; }
+
+#jaco {
+  height: 120px;
+  margin-bottom: 50px;
+  display: none; }
 
 #side {
   top: 0;
