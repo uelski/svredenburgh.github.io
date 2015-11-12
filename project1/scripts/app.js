@@ -1,21 +1,11 @@
 $(document).ready(function(){
 console.log('connected');
 
-// sequence();
-// play();
-// userClick();
-//
-//
-// registerClick();
-// compToArray();
-// compToString();
-//
-// if(finalUserOutput.length === finalComp.length){
-//   compare();
-// }
+
 
 sequence();
 play();
+userClick();
 registerClick();
 clickToCompare();
 
@@ -118,7 +108,7 @@ var user = {
       repeat(compGenerator[i],i)
      }
     //  sequence();
-     userClick();
+    //  userClick();
     //  registerClick();
      compToArray();
      compToString();
@@ -214,20 +204,13 @@ function compare() {
         $('#topOfGame').animate({opacity:0.6}, 2000);
       }
     })//end of animate
-  } else {
-    $('#topOfGame').text("You lose! Game Over");
-    $('#topOfGame').animate({opacity: 1.0},{
-      duration: 1000,
-      complete: function(){
-        $('#topOfGame').animate({opacity:0.6}, 2000);
-      }
-    })
   }
     user.number += 1;
     if (user.number == 2) {
       secondPlayer();
     } else if (user.number == 3) {
     getWinner();
+    resetGame();
     }
   }
 } //end of compare()
@@ -284,4 +267,21 @@ function getWinner() {
   } else {
     $('#topOfGame').text("It's a draw folks!");
   }
+
 }
+
+function resetGame() {
+  console.log('reset');
+  user.number = 1;
+  user.hits = 2;
+  user.score = 0;
+  user.clicks = 0;
+  $('#user1').text(user.score);
+  $('#user2').text(user.score);
+  compGenerator = [];
+  userArray = [];//user pattern
+  idArray = [];//array of id's from compGenerator
+  finalUserOutput = '';//string of user pattern
+  finalComp = '';
+   sequence();
+  }
