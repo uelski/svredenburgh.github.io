@@ -263,6 +263,7 @@ function continueGame(){
 function secondPlayer() {
   user.hits = 2;
   user.clicks = 0;
+  user.score = 0;
   compGenerator = [];
   //compGenerator.push(sounds[randomNum()]);//generated random pattern
   userArray = [];//user pattern
@@ -277,10 +278,10 @@ function getWinner() {
   var user2Score = $('#user2').html();
 
   if (user1Score > user2Score) {
-    $('#topOfGame').append("Player 1 beat Player 2");
+    $('#topOfGame').text("Player 1 beat Player 2");
   } else if(user2Score > user1Score){
-    $('#topOfGame').append("Player 2 beat Player 1");
+    $('#topOfGame').text("Player 2 beat Player 1");
   } else {
-    $('#topOfGame').append("It's a draw folks!");
+    $('#topOfGame').text("It's a draw folks!");
   }
 }
