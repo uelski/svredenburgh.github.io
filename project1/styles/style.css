@@ -17,7 +17,7 @@ body, html {
   padding: 25px;
   height: 160px; }
 
-.wrapper #side {
+#side {
   top: 0;
   left: 0;
   bottom: 0;
@@ -33,6 +33,7 @@ body, html {
   height: 500px;
   padding: 10px;
   text-align: center;
+  border: 1px solid #5c7a78;
   font-family: "Play", sans-serif;
   color: #5c7a78;
   font-size: 25px; }
@@ -63,11 +64,11 @@ body, html {
   margin-right: 15%;
   margin-left: 25%;
   text-align: center;
-  background: linear-gradient(13.90477deg, #171703 26.965%, #d11515 71.273%, #569446 102.44%); }
+  background: black; }
 
 #playBtn {
   margin: 10px;
-  height: 20%;
+  height: 15%;
   margin-left: auto;
   margin-right: auto;
   width: 20%;
@@ -75,14 +76,15 @@ body, html {
   background-color: #040000;
   font-family: "Play", sans-serif;
   font-size: 15px;
-  color: #5c7a78; }
+  color: #5c7a78;
+  outline: none; }
 
 .pad {
   margin: 10px;
   height: 50%;
   width: 25%;
   border-radius: 10px;
-  background: linear-gradient(13.90477deg, #171703 26.965%, #d11515 71.273%, #569446 102.44%);
+  background: #1a5416;
   display: inline-block;
   opacity: .60; }
 
@@ -92,13 +94,12 @@ body, html {
   margin-left: auto;
   margin-right: auto;
   padding: 25px;
-  background: #353538;
+  background: #c8d208;
   border-radius: 10px; }
 
 #footer {
   clear: both;
   height: 100px;
-  border: 1px solid black;
   width: auto; }
 
 .row {
