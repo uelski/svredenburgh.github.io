@@ -98,7 +98,8 @@ function randomNum(){
   return ret;
 }
 
-var user1 = {
+var user = {
+  number: 1,
   level: 1,
   turn: 0,
   difficulty: 1,
@@ -106,10 +107,7 @@ var user1 = {
   active: false,
   hits: 2,
   clicks: 0,
-  compSequence: [],
-  userSequence: [],
 }
-
 
 
  function play(){
@@ -124,7 +122,7 @@ var user1 = {
     //  registerClick();
      compToArray();
      compToString();
-    //  if(finalUserOutput.length === user1.hits){
+    //  if(finalUserOutput.length === user.hits){
     //    compare();
     //  }
    })
@@ -134,7 +132,7 @@ var user1 = {
 
 function sequence() {
 
-  for (var i = 0; i < user1.hits; i++) {
+  for (var i = 0; i < user.hits; i++) {
     var rando = randomNum();
     compGenerator.push(sounds[rando]);
     //console.log(compGenerator);
@@ -155,10 +153,10 @@ function userClick(){
 
 function registerClick() {
   $('.pad').click(function(){
-    user1.clicks += 1;
+    user.clicks += 1;
     var clickedId = $(this).prop('id');
     console.log(clickedId);
-    console.log("user clicks" + user1.clicks);
+    console.log("user clicks" + user.clicks);
     userArray.push(clickedId);
     console.log("user array"+userArray);
     finalUserOutput = userArray.join(',');
@@ -191,24 +189,48 @@ function compare() {
   // console.log(finalUserOutput);
   // console.log(finalComp);
   if (finalUserOutput == finalComp){
-    user1.score += 1;
-
-    $('#user1').text(user1.score);
+    user.score += 1;
+    if(user.number == 1){
+    $('#user1').text(user.score);
+  } else {
+    $('#user2').text(user.score);
+      }
     console.log('good hit');
     $('#topOfGame').text("You won! Press play to move on");
     $('#topOfGame').animate({opacity: 1.0},{
-      duration: 500,
+      duration: 1000,
       complete: function(){
-        $('#topOfGame').animate({opacity:0.6}, 500);
+        $('#topOfGame').animate({opacity:0.6}, 2000);
       }
     })
     continueGame();
   } else {
     console.log('bad hit');
-    $('#topOfGame').text("You lose! Press Play to try again");
-    resetGame();
+    if(user.number == 1){
+    $('#topOfGame').text("You lose! Next Player Turn!");
+    $('#topOfGame').animate({opacity: 1.0},{
+      duration: 1000,
+      complete: function(){
+        $('#topOfGame').animate({opacity:0.6}, 2000);
+      }
+    })//end of animate
+  } else {
+    $('#topOfGame').text("You lose! Game Over");
+    $('#topOfGame').animate({opacity: 1.0},{
+      duration: 1000,
+      complete: function(){
+        $('#topOfGame').animate({opacity:0.6}, 2000);
+      }
+    })
   }
-}
+    user.number += 1;
+    if (user.number == 2) {
+      secondPlayer();
+    } else if (user.number == 3) {
+    getWinner();
+    }
+  }
+} //end of compare()
 
 
 
@@ -216,17 +238,17 @@ function compare() {
 function clickToCompare(){
   // check to see how many are in comp
   // update click counter
-  // console.log(user1.clicks);
+  // console.log(user.clicks);
   // check and see how many times user has clicked
-    if (user1.clicks == user1.hits) {
+    if (user.clicks == user.hits) {
       compare();
     }
 }
 
 function continueGame(){
-  user1.hits += 1;
-  user1.clicks = 0;
-  //console.log("user clicks continue"+user1.clicks);
+  user.hits += 1;
+  user.clicks = 0;
+  //console.log("user clicks continue"+user.clicks);
   compGenerator = [];
   //compGenerator.push(sounds[randomNum()]);//generated random pattern
   userArray = [];//user pattern
@@ -238,6 +260,27 @@ function continueGame(){
   // clickToCompare();
 }
 
-function resetGame() {
+function secondPlayer() {
+  user.hits = 2;
+  user.clicks = 0;
+  compGenerator = [];
+  //compGenerator.push(sounds[randomNum()]);//generated random pattern
+  userArray = [];//user pattern
+  idArray = [];//array of id's from compGenerator
+  finalUserOutput = '';//string of user pattern
+  finalComp = '';
+  sequence();
+}
 
+function getWinner() {
+  var user1Score = $('#user1').html();
+  var user2Score = $('#user2').html();
+
+  if (user1Score > user2Score) {
+    $('#topOfGame').append("Player 1 beat Player 2");
+  } else if(user2Score > user1Score){
+    $('#topOfGame').append("Player 2 beat Player 1");
+  } else {
+    $('#topOfGame').append("It's a draw folks!");
+  }
 }
