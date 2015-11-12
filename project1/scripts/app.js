@@ -186,24 +186,18 @@ function compare() {
     $('#user2').text(user.score);
       }
     console.log('good hit');
-    $('#topOfGame').text("You won! Press play to move on");
-    $('#topOfGame').animate({opacity: 1.0},{
-      duration: 1000,
-      complete: function(){
-        $('#topOfGame').animate({opacity:0.6}, 2000);
-      }
-    })
+    $('#topOfGame').text("You beat round " + user.score + ". Press play to move on.");
+    // $('#topOfGame').animate({opacity: 1.0},{
+    //   duration: 1000,
+    //   complete: function(){
+    //     $('#topOfGame').animate({opacity:0.6}, 2000);
+    //   }
+    // })
     continueGame();
   } else {
     console.log('bad hit');
     if(user.number == 1){
-    $('#topOfGame').text("You lose! Next Player Turn!");
-    $('#topOfGame').animate({opacity: 1.0},{
-      duration: 1000,
-      complete: function(){
-        $('#topOfGame').animate({opacity:0.6}, 2000);
-      }
-    })//end of animate
+    $('#topOfGame').text("Bummer, Jaco is too good. Next Player Turn!");
   }
     user.number += 1;
     if (user.number == 2) {
@@ -261,11 +255,13 @@ function getWinner() {
   var user2Score = $('#user2').html();
 
   if (user1Score > user2Score) {
-    $('#topOfGame').text("Player 1 beat Player 2");
+    $('#topOfGame').text("Player 1 beat Player 2 with a score of " + user1Score + " to " + user2Score +".").append(
+  "<br>").append("Press play to rematch.");
   } else if(user2Score > user1Score){
-    $('#topOfGame').text("Player 2 beat Player 1");
+  $('#topOfGame').text("Player 2 beat Player 1 with a score of " + user2Score + " to " + user1Score +".").append(
+"<br>").append("Press play to rematch.");
   } else {
-    $('#topOfGame').text("It's a draw folks!");
+    $('#topOfGame').text("It's a draw folks! Press play to try again.");
   }
 
 }
