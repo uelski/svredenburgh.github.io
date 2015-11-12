@@ -11,7 +11,6 @@ body,html {
 .wrapper{
   text-align: center;
   position: relative;
-  // background-color: rgb(71, 71, 71);
   background:
   linear-gradient(
 	30.6820686368721deg,
@@ -19,6 +18,7 @@ body,html {
 	rgba(168,158,67,1) 27.639%,
 	rgba(75,120,163,1) 63.403%,
 	rgba(166,255,112,1) 96.042%);
+  margin-right: -20px;
 }
 
 #header{
@@ -89,7 +89,6 @@ margin-left: -20px;
   border-radius: 30px;
   height: 500px;
   width: 60%;
-  // float: right;
   display: block;
   margin-top: 10px;
   margin-bottom: 5%;
@@ -143,5 +142,4 @@ outline: none;
 .row {
   height: 30%;
   width: auto;
-  // border: 1px solid black;
 }

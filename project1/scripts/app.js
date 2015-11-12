@@ -68,11 +68,8 @@ function soundFlash(square){
   flash(square);
 }
 function animate(square, times){
-  //console.log('animate started');
   if (square == null) return false;
-  //console.log('animate passed null check');
   repeat(square, times);
-  // soundFlash(square);
   playSound(square);
   $(square.pad).animate({opacity: 1.0},{
     duration: 50,
@@ -103,19 +100,11 @@ var user = {
  function play(){
    $('#playBtn').click(function(){
      for (var i = 0; i < compGenerator.length; i++) {
-      //  animate(compGenerator[i]);
-      //  console.log(compGenerator);
       repeat(compGenerator[i],i)
      }
      $('#jaco').fadeOut([4000]);
-    //  sequence();
-    //  userClick();
-    //  registerClick();
      compToArray();
      compToString();
-    //  if(finalUserOutput.length === user.hits){
-    //    compare();
-    //  }
    })
  }
 
@@ -126,7 +115,6 @@ function sequence() {
   for (var i = 0; i < user.hits; i++) {
     var rando = randomNum();
     compGenerator.push(sounds[rando]);
-    //console.log(compGenerator);
   }
 }
 
@@ -177,8 +165,7 @@ for (var i = 0; i < idArray.length; i++) {
 }
 
 function compare() {
-  // console.log(finalUserOutput);
-  // console.log(finalComp);
+
   if (finalUserOutput == finalComp){
     user.score += 1;
     if(user.number == 1){
@@ -222,16 +209,12 @@ function clickToCompare(){
 function continueGame(){
   user.hits += 1;
   user.clicks = 0;
-  //console.log("user clicks continue"+user.clicks);
   compGenerator = [];
-  //compGenerator.push(sounds[randomNum()]);//generated random pattern
   userArray = [];//user pattern
   idArray = [];//array of id's from compGenerator
   finalUserOutput = '';//string of user pattern
   finalComp = '';
   sequence();
-  // play();
-  // clickToCompare();
 }
 
 function secondPlayer() {
@@ -239,7 +222,6 @@ function secondPlayer() {
   user.clicks = 0;
   user.score = 0;
   compGenerator = [];
-  //compGenerator.push(sounds[randomNum()]);//generated random pattern
   userArray = [];//user pattern
   idArray = [];//array of id's from compGenerator
   finalUserOutput = '';//string of user pattern
